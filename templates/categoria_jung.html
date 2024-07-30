@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categoría Jung</title>
+</head>
+<body>
+    <h1>Categoría Jung</h1>
+    <p>Perfil: {{ perfil.nombre }} {{ perfil.apellidoPaterno }} {{ perfil.apellidoMaterno }}</p>
+    <p>Puesto: {{ puesto.nombre }}</p>
+    <p>Categoría Jung: {{ categoria }}</p>
+    <h2>Resultados de los cuestionarios:</h2>
+    <ul>
+        {% for cuestionario in cuestionarios %}
+        <li>{{ cuestionario.seccion }} - Puntos: {{ cuestionario.puntos }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

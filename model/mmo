@@ -1,0 +1,100 @@
+from sqlalchemy import Column, Integer, String, ForeignKey, create_engine
+from sqlalchemy.orm import relationship, sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
+# Clase Database Singleton
+class Database:
+    __instance = None
+
+    @staticmethod
+    def get_instance():
+        if Database.__instance is None:
+            Database()
+        return Database.__instance
+
+    def __init__(self):
+        if Database.__instance is not None:
+            raise Exception("This class is a Singleton!")
+        else:
+            Database.__instance = self
+            # Asegúrate de que la cadena de conexión es correcta
+            self.engine = create_engine('mysql+pymysql://root:123456@localhost/VYj', echo=True)
+            self.Base = declarative_base()
+            self.Session = sessionmaker(bind=self.engine)
+            self.session = self.Session()
+
+    def get_session(self):
+        return self.session
+
+# Inicializar la instancia de Database
+db_instance = Database.get_instance()
+Base = db_instance.Base
+
+# Modelos ORM
+class Puesto(Base):
+    __tablename__ = 'puestos'
+    idpuestos = Column(Integer, primary_key=True, autoincrement=True)
+    puesto = Column(String(100), nullable=False)
+    
+    # Relaciones
+    perfiles = relationship("Perfil", back_populates="puesto")
+
+class Perfil(Base):
+    __tablename__ = 'perfil'
+    id_perfil = Column(Integer, primary_key=True, autoincrement=True)
+    nombre = Column(String(100), nullable=False)
+    apellidoPaterno = Column(String(100), nullable=False)
+    apellidoMaterno = Column(String(100), nullable=False)
+    telefono = Column(String(100), nullable=False)
+    correo_electronico = Column(String(100), nullable=False)
+    id_puesto = Column(Integer, ForeignKey('puestos.idpuestos'), nullable=False)
+    
+    # Relaciones
+    puesto = relationship("Puesto", back_populates="perfiles")
+    respuestas_vark = relationship("RespuestaVark", back_populates="persona")
+    resultado_vark = relationship("ResultadoVark", back_populates="persona")
+
+class Pregunta(Base):
+    __tablename__ = 'preguntas'
+    id_pregunta = Column(Integer, primary_key=True, autoincrement=True)
+    enunciado = Column(String(255), nullable=False)
+
+    # Relaciones
+    opciones_respuesta = relationship("OpcionRespuesta", back_populates="pregunta")
+    respuestas_vark = relationship("RespuestaVark", back_populates="pregunta")
+
+class OpcionRespuesta(Base):
+    __tablename__ = 'opciones_respuesta'
+    id_opcion = Column(Integer, primary_key=True, autoincrement=True)
+    id_pregunta = Column(Integer, ForeignKey('preguntas.id_pregunta'), nullable=False)
+    opcion = Column(String(1), nullable=False)
+    respuesta_texto = Column(String(255), nullable=False)
+    
+    # Relaciones
+    pregunta = relationship("Pregunta", back_populates="opciones_respuesta")
+
+class RespuestaVark(Base):
+    __tablename__ = 'respuestas_vark'
+    id_respuesta = Column(Integer, primary_key=True, autoincrement=True)
+    id_persona = Column(Integer, ForeignKey('perfil.id_perfil'), nullable=False)
+    id_pregunta = Column(Integer, ForeignKey('preguntas.id_pregunta'), nullable=False)
+    respuesta = Column(String(1), nullable=False)
+    
+    # Relaciones
+    persona = relationship("Perfil", back_populates="respuestas_vark")
+    pregunta = relationship("Pregunta", back_populates="respuestas_vark")
+
+class ResultadoVark(Base):
+    __tablename__ = 'resultado_vark'
+    id_resultado = Column(Integer, primary_key=True, autoincrement=True)
+    id_persona = Column(Integer, ForeignKey('perfil.id_perfil'), nullable=False)
+    V = Column(Integer, nullable=False)
+    A = Column(Integer, nullable=False)
+    R = Column(Integer, nullable=False)
+    K = Column(Integer, nullable=False)
+    
+    # Relaciones
+    persona = relationship("Perfil", back_populates="resultado_vark")
+
+# Crear todas las tablas
+Database.get_instance().Base.metadata.create_all(Database.get_instance().engine)

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin-top: 10px; /* Ajustado el margen superior */
+        }
+
+        .form-container {
+            max-width: 300px; /* Reducido el ancho máximo */
+            width: 100%;
+            border: 2px solid black; /* Reducido el grosor del borde */
+            background-color: white;
+            padding: 20px;
+            font-family: 'Arial Black', sans-serif;
+            box-sizing: border-box; /* Para incluir el padding y el borde en el ancho total */
+            background-color: #F5F5DC; /* Color de fondo del contenedor */
+        }
+
+        .input-group {
+            margin-bottom: 15px; /* Reducido el margen inferior */
+            position: relative;
+        }
+
+        .input {
+            border: 2px solid #000; /* Reducido el grosor del borde */
+            background: none;
+            padding: 10px; /* Reducido el padding */
+            font-size: 0.9rem; /* Reducido el tamaño de fuente */
+            color: black;
+            width: calc(100% - 20px); /* Reducido el ancho total */
+            box-sizing: border-box; /* Para incluir el padding en el ancho total */
+        }
+
+        .user-label {
+            position: absolute;
+            left: 10px; /* Ajustado el espacio entre el label y el borde izquierdo */
+            top: -10px; /* Ajustado el espacio entre el label y el borde superior */
+            color: #000;
+            background-color: #F5F5DC;
+            padding: 0 5px; /* Reducido el padding */
+            font-size: 0.7rem; /* Reducido el tamaño de fuente */
+            transition: 0.3s;
+        }
+
+        /* Nuevos estilos para .box */
+        .box {
+            width: auto; /* Cambio para que el botón se ajuste al texto */
+            height: auto;
+            transition: .5s linear;
+            position: relative;
+            display: block;
+            margin: 0 auto; /* Centrar horizontalmente */
+            overflow: hidden;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 10px; /* Ajuste el margen entre botones */
+            background: transparent;
+            text-transform: uppercase;
+            font-weight: 900;
+            border: none; /* Asegurarse de que no hay borde por defecto */
+        }
+
+        .box:before,
+        .box:after {
+            position: absolute;
+            content: '';
+            height: 4px;
+            width: 100%;
+            background: #262626; /* Asegúrate de que esto se vea si quieres el efecto visible siempre */
+            transform: translateX(-100%);
+            transition: transform .3s linear, height .3s linear .3s; /* Ajuste de la transición */
+        }
+
+        .box:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .box:hover:before {
+            transform: translateX(0);
+        }
+
+        .box:hover:after {
+            transform: translateX(0);
+        }
+    </style>
+    
+    <script>
+        function validarFormulario() {
+            var matricula = document.getElementById('matricula').value;
+            var contrasena = document.getElementById('contrasena').value;
+    
+            if (matricula.trim() == '' || contrasena.trim() == '') {
+                alert('Por favor, completa todos los campos.');
+                return false;
+            }
+    
+            return true;
+        }
+    </script>
+    
+    <div class="container">
+        <div class="form-container">
+            <h1 style="text-align:center;">Iniciar Sesión</h1>
+            <form method="POST" action="/login" onsubmit="return validarFormulario()">
+                <div class="input-group">
+                    <label for="matricula" class="user-label">Matrícula:</label><br>
+                    <input type="text" id="matricula" name="matricula" class="input" ><br>
+                </div>
+                <div class="input-group">
+                    <label for="contrasena" class="user-label">Contraseña:</label><br>
+                    <input type="password" id="contrasena" name="contrasena" class="input" ><br><br>
+                </div>
+                <div style="text-align:center;">
+                    <input type="submit" value="Iniciar Sesión" class="box">
+                </div>
+            </form>
+            <form action="{{ url_for('register') }}"> <!-- Utilizando url_for() para generar la URL de la ruta de registro -->
+                <div style="text-align:center;">
+                    <input type="submit" value="Registrarse" class="box">
+                </div>
+            </form>
+        </div>
+    </div>
+    
+{% endblock %}

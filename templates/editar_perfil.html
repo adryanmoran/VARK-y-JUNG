@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        label {
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        button[type="submit"] {
+            background-color: #008CBA;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #007a99;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Editar Perfil</h1>
+    <form action="/editar_perfil/{{ perfil.id_perfil }}" method="POST">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" value="{{ perfil.nombre }}" required><br>
+        <label for="apellido_paterno">Apellido Paterno:</label><br>
+        <input type="text" id="apellido_paterno" name="apellido_paterno" value="{{ perfil.apellidoPaterno }}" required><br>
+        <label for="apellido_materno">Apellido Materno:</label><br>
+        <input type="text" id="apellido_materno" name="apellido_materno" value="{{ perfil.apellidoMaterno }}" required><br>
+        <label for="telefono">Teléfono:</label><br>
+        <input type="tel" id="telefono" name="telefono" value="{{ perfil.telefono }}" required><br>
+        <label for="correo_electronico">Correo Electrónico:</label><br>
+        <input type="email" id="correo_electronico" name="correo_electronico" value="{{ perfil.correo_electronico }}" required><br>
+        <label for="direccion">Dirección:</label><br>
+        <input type="text" id="direccion" name="direccion" value="{{ perfil.direccion }}" required><br>
+        <label for="id_puesto">Puesto:</label><br>
+        <select id="id_puesto" name="id_puesto" required>
+            {% for puesto in puestos %}
+                <option value="{{ puesto.id_puesto }}">{{ puesto.puesto }}</option>
+            {% endfor %}
+        </select><br><br>
+        
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sección 5 y 6</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Secciones.css') }}">
+</head>
+<body>
+    <form action="/sumar_secciones5_6" method="post"> 
+        <div class="columnas">
+            <section>
+                <h2>Sección 5</h2>
+                <div class="pregunta">
+                    <label for="pregunta37">1. Tiende a ver defectos ajenos</label>
+                    <input type="text" id="pregunta37" name="pregunta37">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta38">2. Se convence con la lógica</label>
+                    <input type="text" id="pregunta38" name="pregunta38">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta39">3. Aparenta ser frío y reservado</label>
+                    <input type="text" id="pregunta39" name="pregunta39">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta40">4. Toma decisiones objetivamente</label>
+                    <input type="text" id="pregunta40" name="pregunta40">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta41">5. No toma las cosas personalmente</label>
+                    <input type="text" id="pregunta41" name="pregunta41">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta42">6. Es motivado por las metas</label>
+                    <input type="text" id="pregunta42" name="pregunta42">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta43">7. Honesto y directo</label>
+                    <input type="text" id="pregunta43" name="pregunta43">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta44">8. Valora la honestidad y la justicia</label>
+                    <input type="text" id="pregunta44" name="pregunta44">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta45">9. Argumenta o debate por diversión</label>
+                    <input type="text" id="pregunta45" name="pregunta45">
+                </div>
+            </section>
+
+            <section>
+                <h2>Sección 6</h2>
+                <div class="pregunta">
+                    <label for="pregunta46">1. Tiende a ver cualidades ajenas</label>
+                    <input type="text" id="pregunta46" name="pregunta46">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta47">2. Se convence por sus sensaciones</label>
+                    <input type="text" id="pregunta47" name="pregunta47">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta48">3. Aparenta ser amable y amistoso</label>
+                    <input type="text" id="pregunta48" name="pregunta48">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta49">4. Decide por sus valores y sensaciones</label>
+                    <input type="text" id="pregunta49" name="pregunta49">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta50">5. Toma muchas cosas personalmente</label>
+                    <input type="text" id="pregunta50" name="pregunta50">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta51">6. Es motivado por el reconocimiento</label>
+                    <input type="text" id="pregunta51" name="pregunta51">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta52">7. Diplomático y con mucho tacto</label>
+                    <input type="text" id="pregunta52" name="pregunta52">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta53">8. Valora la armonía y la compasión</label>
+                    <input type="text" id="pregunta53" name="pregunta53">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta54">9. Evita discusiones y conflictos</label>
+                    <input type="text" id="pregunta54" name="pregunta54">
+                </div>
+            </section>
+        </div>
+        
+        <input type="hidden" id="id_perfil" name="id_perfil" value="{{ perfil.id_perfil }}">
+        <input type="hidden" id="id_puesto" name="id_puesto" value="{{ perfil.id_puesto }}">
+        
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

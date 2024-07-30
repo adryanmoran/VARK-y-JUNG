@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados VARK por Puesto</title>
+    <style>
+        /* Reset de estilos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #333;
+        }
+        
+        /* Estilos de la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            color: #555;
+        }
+        
+        /* Estilos del gráfico */
+        canvas {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 800px; /* Ajusta el ancho máximo según tu preferencia */
+            height: auto;
+        }
+        
+        /* Estilos de media query para hacer el sitio responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+        
+            th, td {
+                padding: 8px;
+            }
+        }
+        
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Resultados VARK por Puesto</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Puesto</th>
+                <th>Total Visual</th>
+                <th>Total Aural</th>
+                <th>Total Lectura/Escritura</th>
+                <th>Total Kinestésico</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.puesto }}</td>
+                <td>{{ result.total_V }}</td>
+                <td>{{ result.total_A }}</td>
+                <td>{{ result.total_R }}</td>
+                <td>{{ result.total_K }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <canvas id="varkChart" width="400" height="200"></canvas>
+    
+    <script>
+        // Prepare data for Chart.js
+        const labels = [];
+        const dataV = [];
+        const dataA = [];
+        const dataR = [];
+        const dataK = [];
+
+        {% for result in results %}
+        labels.push('{{ result.puesto }}');
+        dataV.push({{ result.total_V }});
+        dataA.push({{ result.total_A }});
+        dataR.push({{ result.total_R }});
+        dataK.push({{ result.total_K }});
+        {% endfor %}
+
+        const ctx = document.getElementById('varkChart').getContext('2d');
+        const varkChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Visual',
+                        data: dataV,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Aural',
+                        data: dataA,
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Lectura/Escritura',
+                        data: dataR,
+                        backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                        borderColor: 'rgba(255, 206, 86, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Kinestésico',
+                        data: dataK,
+                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <li><a href="/bienvenido">Inicio</a></li>
+
+</body>
+</html>

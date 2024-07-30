@@ -1,0 +1,40 @@
+{% extends "base_menu.html" %}
+{% block title %}Dashboard{% endblock %}
+
+    <canvas id="miGrafico"></canvas>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/datos_totales')
+                .then(response => response.json())
+                .then(data => {
+                    const categorias = data.map(entry => entry[0]);
+                    const cantidades = data.map(entry => entry[1]);
+
+                    const ctx = document.getElementById('miGrafico').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: categorias,
+                            datasets: [{
+                                label: 'Resultados Totales',
+                                data: cantidades,
+                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                });
+        });
+    </script>
+{% endblock %}

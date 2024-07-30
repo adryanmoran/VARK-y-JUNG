@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+</head>
+<body>
+    <h1>Perfil</h1>
+    <p>Correo electrónico: {{ perfil.correo_electronico }}</p>
+    <p>Nombre: {{ perfil.nombre }} {{ perfil.apellidoPaterno }} {{ perfil.apellidoMaterno }}</p>
+    <p>Categoría Jung: {% if categoria %}{{ categoria.categoria }}{% else %}No asignada{% endif %}</p>
+    <p>Resultado VARK - V: {% if resultado %}{{ resultado.V }}, A: {{ resultado.A }}, R: {{ resultado.R }}, K: {{ resultado.K }}{% else %}No asignado{% endif %}</p>
+    <a href="/">Volver a la página de inicio</a>
+</body>
+</html>

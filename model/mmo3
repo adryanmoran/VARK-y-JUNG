@@ -1,0 +1,22 @@
+class Database:
+    __instance = None
+
+    @staticmethod
+    def get_instance():
+        if Database.__instance is None:
+            Database()
+        return Database.__instance
+
+    def __init__(self):
+        if Database.__instance is not None:
+            raise Exception("This class is a Singleton!")
+        else:
+            Database.__instance = self
+            # Asegúrate de que la cadena de conexión es correcta
+            self.engine = create_engine('mysql+pymysql://root:123456@localhost/junxx', echo=True)
+            self.Base = declarative_base()
+            self.Session = sessionmaker(bind=self.engine)
+            self.session = self.Session()
+
+    def get_session(self):
+        return self.session

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sección 1 y 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Secciones.css') }}"> 
+
+   
+</head>
+<body>
+
+    <form action="/sumar_secciones" method="post"> 
+        <div class="columnas">
+            <section>
+                <h2>Sección 1</h2>
+                <div class="pregunta">
+                    <label for="pregunta1">1. Emprendedor y entusiasta</label>
+                    <input type="text" id="pregunta1" name="pregunta1">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta2">2. Actúa y luego piensa</label>
+                    <input type="text" id="pregunta2" name="pregunta2">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta3">3. Piensa en voz alta</label>
+                    <input type="text" id="pregunta3" name="pregunta3">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta4">4. Tiene mucha energía</label>
+                    <input type="text" id="pregunta4" name="pregunta4">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta5">5. Prefiere hacer varias cosas a la vez</label>
+                    <input type="text" id="pregunta5" name="pregunta5">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta6">6. Habla más que escucha</label>
+                    <input type="text" id="pregunta6" name="pregunta6">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta7">7. Es fácil de conocer</label>
+                    <input type="text" id="pregunta7" name="pregunta7">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta8">8. Puede distraerse con facilidad</label>
+                    <input type="text" id="pregunta8" name="pregunta8">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta9">9. Le gusta rodearse de gente</label>
+                    <input type="text" id="pregunta9" name="pregunta9">
+                </div>
+            </section>
+
+            <section>
+                <h2>Sección 2</h2>
+                <div class="pregunta">
+                    <label for="pregunta10">1. Reservado</label>
+                    <input type="text" id="pregunta10" name="pregunta10">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta11">2. Piensa y luego actúa</label>
+                    <input type="text" id="pregunta11" name="pregunta11">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta12">3. Piensa en voz baja</label>
+                    <input type="text" id="pregunta12" name="pregunta12">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta13">4. Energía tranquila</label>
+                    <input type="text" id="pregunta13" name="pregunta13">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta14">5. Prefiere concentrarse en una cosa</label>
+                    <input type="text" id="pregunta14" name="pregunta14">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta15">6. Escucha más que habla</label>
+                    <input type="text" id="pregunta15" name="pregunta15">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta16">7. Lleva una vida muy privada</label>
+                    <input type="text" id="pregunta16" name="pregunta16">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta17">8. Gran capacidad de concentración</label>
+                    <input type="text" id="pregunta17" name="pregunta17">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta18">9. Se siente a gusto a solas</label>
+                    <input type="text" id="pregunta18" name="pregunta18">
+                </div>
+            </section>
+        </div>
+        
+        <!-- Campos ocultos para id_perfil e id_puesto -->
+        <input type="hidden" id="id_perfil" name="id_perfil" value="{{ perfil.id_perfil }}">
+        <input type="hidden" id="id_puesto" name="id_puesto" value="{{ perfil.id_puesto }}">
+        
+        <button type="submit">Enviar</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregunta del Futuro</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='VARK.css') }}">
+    <!-- SweetAlert library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Pregunta del Futuro</h1>
+        <h2>{{ pregunta.enunciado }}</h2>
+        <form id="preguntaForm" action="{{ url_for('guardar_respuesta') }}" method="post" onsubmit="return validarFormulario()">
+            {% for opcion in opciones %}
+            <input type="radio" id="{{ opcion.opcion }}" name="opcion" value="{{ opcion.opcion }}">
+            <label for="{{ opcion.opcion }}">{{ opcion.respuesta_texto }}</label><br>
+            {% endfor %}
+            <br>
+            <input type="submit" value="Guardar Respuesta">
+        </form>
+    </div>
+
+    <script>
+        function validarFormulario() {
+            var opcionSeleccionada = document.querySelector('input[name="opcion"]:checked');
+            if (!opcionSeleccionada) {
+                // Mostrar alerta con SweetAlert si no se ha seleccionado ninguna opción
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Por favor, selecciona una opción antes de enviar el formulario!',
+                });
+                return false; // Evitar que el formulario se envíe
+            }
+            return true; // Permitir que el formulario se envíe
+        }
+    </script>
+</body>
+</html>

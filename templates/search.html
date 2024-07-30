@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Buscar Perfil</title>
+</head>
+<body>
+    <h1>Buscar Perfil</h1>
+    <form action="/buscar_perfil" method="post">
+        <label for="correo_electronico">Correo Electrónico:</label>
+        <input type="email" id="correo_electronico" name="correo_electronico" required>
+        <button type="submit">Buscar</button>
+    </form>
+</body>
+</html>
+{% endblock %}

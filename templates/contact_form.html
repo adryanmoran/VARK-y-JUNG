@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif; /* Cambiado el tipo de fuente */
+        background-color: #f0f0f0; /* Cambiado el color de fondo del body */
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .form-container {
+        max-width: 300px;
+        width: 100%;
+        border: 2px solid black;
+        background-color: white;
+        padding: 20px;
+        font-family: 'Arial Black', sans-serif;
+        box-sizing: border-box;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+        position: relative;
+    }
+
+    .input {
+        border: 2px solid #000;
+        background: none;
+        padding: 10px;
+        font-size: 0.9rem;
+        color: black;
+        width: calc(100% - 20px);
+        box-sizing: border-box;
+    }
+
+    .user-label {
+        position: absolute;
+        left: 10px;
+        top: -10px;
+        color: #000;
+        background-color: #F5F5DC;
+        padding: 0 5px;
+        font-size: 0.7rem;
+        transition: 0.3s;
+    }
+
+    /* Nuevos estilos para .box */
+    .box {
+        width: auto;
+        height: auto;
+        transition: .5s linear;
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        padding: 15px;
+        text-align: center;
+        margin: 0 5px;
+        background: transparent;
+        text-transform: uppercase;
+        font-weight: 900;
+        border: none;
+    }
+
+    .box:before,
+    .box:after {
+        position: absolute;
+        content: '';
+        height: 4px;
+        width: 100%;
+        background: #262626;
+        transform: translateX(-100%);
+        transition: transform .3s linear, height .3s linear .3s;
+    }
+
+    .box:hover {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .box:hover:before {
+        transform: translateX(0);
+    }
+
+    .box:hover:after {
+        transform: translateX(0);
+    }
+</style>
+<div class="container">
+    <form class="form-container" action="/contacto" method="post">
+        <h1>Contacto</h1>
+        <div class="input-group">
+            <label for="nombre" class="user-label">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre" class="input"><br>
+        </div>
+        <div class="input-group">
+            <label for="correo" class="user-label">Correo electrónico:</label><br>
+            <input type="email" id="correo" name="correo" class="input"><br>
+        </div>
+        <div class="input-group">
+            <label for="asunto" class="user-label">Asunto:</label><br>
+            <input type="text" id="asunto" name="asunto" class="input"><br>
+        </div>
+        <div class="input-group">
+            <label for="mensaje" class="user-label">Mensaje:</label><br>
+            <textarea id="mensaje" name="mensaje" class="input"></textarea><br>
+        </div>
+        <input type="submit" value="Enviar" class="box">
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> <!-- Incluir SweetAlert -->
+    <script src="{{ url_for('static', filename='contact.js') }}"></script> <!-- Incluir el archivo JavaScript aquí -->
+    
+{% endblock %}

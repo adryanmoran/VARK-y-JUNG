@@ -1,0 +1,85 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 10px; /* Ajustado el margen superior */
+}
+
+.form-container {
+    max-width: 300px; /* Reducido el ancho máximo */
+    width: 100%;
+    border: 2px solid black; /* Reducido el grosor del borde */
+    background-color: white;
+    padding: 20px;
+    font-family: 'Arial Black', sans-serif;
+    box-sizing: border-box; /* Para incluir el padding y el borde en el ancho total */
+    background-color: #F5F5DC; /* Color de fondo del contenedor */
+}
+
+.input-group {
+    margin-bottom: 10px; /* Reducido el margen inferior */
+    position: relative;
+}
+
+.input {
+    border: 2px solid #000; /* Reducido el grosor del borde */
+    background: none;
+    padding: 8px; /* Reducido el padding */
+    font-size: 0.8rem; /* Reducido el tamaño de fuente */
+    color: black;
+    width: calc(100% - 20px); /* Reducido el ancho total */
+    box-sizing: border-box; /* Para incluir el padding en el ancho total */
+}
+
+.user-label {
+    position: absolute;
+    left: 10px; /* Ajustado el espacio entre el label y el borde izquierdo */
+    top: -8px; /* Ajustado el espacio entre el label y el borde superior */
+    color: #000;
+    background-color: #F5F5DC;
+    padding: 0 5px; /* Reducido el padding */
+    font-size: 0.7rem; /* Reducido el tamaño de fuente */
+    transition: 0.3s;
+}
+
+/* Nuevos estilos para .box */
+.box {
+    width: auto; /* Cambio para que el botón se ajuste al texto */
+    height: auto;
+    transition: .5s linear;
+    position: relative;
+    display: inline-block; /* Cambio a inline-block para mejor ajuste en el formulario */
+    overflow: hidden;
+    padding: 10px 15px; /* Ajuste de padding */
+    text-align: center;
+    margin: 0 5px;
+    background: transparent;
+    text-transform: uppercase;
+    font-weight: 900;
+    border: none; /* Asegurarse de que no hay borde por defecto */
+    font-size: 0.8rem; /* Reducir tamaño de fuente */
+}
+
+.box:before,
+.box:after {
+    position: absolute;
+    content: '';
+    height: 4px;
+    width: 100%;
+    background: #262626; /* Asegúrate de que esto se vea si quieres el efecto visible siempre */
+    transform: translateX(-100%);
+    transition: transform .3s linear, height .3s linear .3s; /* Ajuste de la transición */
+}
+
+.box:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.box:hover:before {
+    transform: translateX(0);
+}
+
+.box:hover:after {
+    transform: translateX(0);
+}

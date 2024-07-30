@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado del Cuestionario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            text-align: center;
+            margin-top: 50px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            color: #555;
+            margin: 5px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        canvas {
+            margin-top: 20px;
+        }
+        .announcement {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 30px;
+            color: #333;
+        }
+        .perfil-text {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .perfil-result {
+            font-size: 24px;
+            color: #4CAF50;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Resultado del Cuestionario</h1>
+        <div class="perfil-text">Su perfil es:</div>
+        <div class="perfil-result" id="perfil"></div>
+        <!-- Canvas para la gráfica -->
+        <canvas id="myChart"></canvas>
+        <!-- Botón para regresar al menú de cuestionario -->
+        <form action="{{ url_for('menu_cuestionario', id_perfil=perfil_vark.id_persona) }}">
+            <button type="submit">Regresar al Menú de Cuestionario</button>
+        </form>
+        <!-- Botón para cerrar la sesión -->
+        <form action="{{ url_for('index') }}" method="post">
+            <button type="submit">Cerrar Sesión</button>
+        </form>
+    </div>
+    <!-- Anuncio -->
+    <div class="announcement">
+        <p>Resultados de las letras:</p>
+        <p>V: {{ perfil_vark.V }}</p>
+        <p>A: {{ perfil_vark.A }}</p>
+        <p>R: {{ perfil_vark.R }}</p>
+        <p>K: {{ perfil_vark.K }}</p>
+    </div>
+    <script>
+        // Obtener el contexto del lienzo (canvas)
+        var ctx = document.getElementById('myChart').getContext('2d');
+        // Datos para la gráfica
+        var data = {
+            labels: ['V', 'A', 'R', 'K'],
+            datasets: [{
+                label: 'Perfil VARK',
+                data: [{{ perfil_vark.V }}, {{ perfil_vark.A }}, {{ perfil_vark.R }}, {{ perfil_vark.K }}],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+        // Opciones para la gráfica
+        var options = {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        };
+        // Crear la instancia de la gráfica
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: options
+        });
+        // Obtenemos los datos del perfil
+        var V = {{ perfil_vark.V }};
+        var A = {{ perfil_vark.A }};
+        var R = {{ perfil_vark.R }};
+        var K = {{ perfil_vark.K }};
+        // Determinamos el perfil dominante
+        var perfil = "";
+        if (V >= A && V >= R && V >= K) {
+            perfil = "Visual";
+        } else if (A >= V && A >= R && A >= K) {
+            perfil = "Auditivo";
+        } else if (R >= V && R >= A && R >= K) {
+            perfil = "Lector";
+        } else {
+            perfil = "Kinestésico";
+        }
+        // Mostramos el perfil dominante en el anuncio
+        document.getElementById("perfil").innerText = perfil;
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de búsqueda</title>
+</head>
+<body>
+    <h1>Resultados de búsqueda</h1>
+
+    <!-- Formulario para ingresar correo y puesto -->
+    <form action="/" method="post">
+        <label for="correo">Correo electrónico:</label>
+        <input type="text" id="correo" name="correo" required><br><br>
+
+        <label for="puesto">Puesto:</label>
+        <input type="text" id="puesto" name="puesto" required><br><br>
+
+        <input type="submit" value="Buscar">
+    </form>
+
+    <!-- Botón para calcular el total -->
+    <form action="/total" method="post">
+        <input type="submit" value="Calcular Total">
+    </form>
+
+    <!-- Resultados por correo electrónico -->
+    <h2>Resultados por correo electrónico:</h2>
+    <ul>
+        {% if resultados_correo %}
+            {% for resultado in resultados_correo %}
+                <li>{{ resultado.categoria }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No se encontraron resultados para este correo electrónico.</li>
+        {% endif %}
+    </ul>
+
+    <!-- Resultados por puesto -->
+    <h2>Resultados por puesto:</h2>
+    <ul>
+        {% if resultados_puesto %}
+            {% for resultado in resultados_puesto %}
+                <li>{{ resultado.categoria }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No se encontraron resultados para este puesto.</li>
+        {% endif %}
+    </ul>
+</body>
+</html>

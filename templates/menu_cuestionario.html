@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menú Cuestionario</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='menu_perfil.css') }}">
+
+</head>
+<body>
+    <h1>Menú Cuestionario</h1>
+    <p>Bienvenido {{ perfil.nombre }} {{ perfil.apellidoPaterno }} {{ perfil.apellidoMaterno }}</p>
+    <p><a href="/Seccion1_2">Cuestionario de Personalidad</a></p>
+    <li><a href="{{ url_for('mostrar_siguiente_pregunta') }}">Cuestionario de Aprendizaje</a></li>
+    <img src="{{ url_for('static', filename='jax.gif') }}" alt="Jax animation">
+</body>
+</html>

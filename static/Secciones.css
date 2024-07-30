@@ -1,0 +1,63 @@
+
+/* Estilos para las columnas */
+.columnas {
+    display: flex; /* Usar el modelo de caja flexible */
+    justify-content: space-between; /* Distribuir el espacio entre las columnas */
+    gap: 2%; /* Espacio entre columnas */
+}
+
+/* Estilos para las secciones */
+section, div {
+    flex: 1; /* Ancho flexible para las secciones */
+    padding: 10px; /* Espaciado interno */
+    box-sizing: border-box; /* Incluir el padding en el ancho */
+    background-color: #f9f9f9; /* Fondo ligero para visibilidad */
+    border: 1px solid #ddd; /* Borde ligero */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+/* Estilos para los títulos de sección */
+h2 {
+    text-align: center; /* Centrar el texto */
+    color: #333; /* Color del texto */
+}
+
+/* Estilos para las preguntas */
+.pregunta {
+    margin-bottom: 15px; /* Espaciado entre preguntas */
+}
+
+/* Estilos para los inputs */
+input[type="text"] {
+    width: 100%; /* Ancho del 100% para los inputs */
+    padding: 10px; /* Espaciado interno */
+    box-sizing: border-box; /* Incluir el padding en el ancho */
+    border: 1px solid #ccc; /* Borde de los inputs */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+}
+
+/* Estilos para el botón */
+button {
+    margin-top: 20px; /* Margen superior */
+    padding: 15px; /* Espaciado interno */
+    width: 100%; /* Ancho del 100% para que ocupe todo el contenedor */
+    background-color: #4CAF50; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 18px; /* Tamaño de fuente */
+    cursor: pointer; /* Cursor de mano */
+}
+
+/* Efecto al pasar el ratón sobre el botón */
+button:hover {
+    background-color: #45a049; /* Color de fondo al pasar el ratón */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .columnas {
+        flex-direction: column; /* Cambiar a columna en pantallas más pequeñas */
+    }
+}

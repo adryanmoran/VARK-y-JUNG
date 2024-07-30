@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sección 3 y 4</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Secciones.css') }}">
+</head>
+<body>
+    <form action="/sumar_secciones3_4" method="post">
+        <div class="columnas">
+            <section>
+                <h2>Sección 3</h2>
+                <div class="pregunta">
+                    <label for="pregunta19">1. Confía en la experiencia propia</label>
+                    <input type="text" id="pregunta19" name="pregunta19">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta20">2. Realista, ve lo que es</label>
+                    <input type="text" id="pregunta20" name="pregunta20">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta21">3. Utiliza destrezas ya aprendidas</label>
+                    <input type="text" id="pregunta21" name="pregunta21">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta22">4. Prefiere instrucciones detalladas</label>
+                    <input type="text" id="pregunta22" name="pregunta22">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta23">5. Ve detalles y recuerda hechos</label>
+                    <input type="text" id="pregunta23" name="pregunta23">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta24">6. Admira soluciones prácticas</label>
+                    <input type="text" id="pregunta24" name="pregunta24">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta25">7. Se concentra en hechos específicos</label>
+                    <input type="text" id="pregunta25" name="pregunta25">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta26">8. Trabaja a un ritmo uniforme</label>
+                    <input type="text" id="pregunta26" name="pregunta26">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta27">9. Vive en el aquí y en ahora</label>
+                    <input type="text" id="pregunta27" name="pregunta27">
+                </div>
+            </section>
+
+            <section>
+                <h2>Sección 4</h2>
+                <div class="pregunta">
+                    <label for="pregunta28">1. Confía en sus instintos</label>
+                    <input type="text" id="pregunta28" name="pregunta28">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta29">2. Imaginativo, ve lo que podría ser</label>
+                    <input type="text" id="pregunta29" name="pregunta29">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta30">3. Prefiere desarrollar nuevas destrezas</label>
+                    <input type="text" id="pregunta30" name="pregunta30">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta31">4. Gusta descubrir las cosas por sí mismo</label>
+                    <input type="text" id="pregunta31" name="pregunta31">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta32">5. Percibe cualquier cosa nueva o diferente</label>
+                    <input type="text" id="pregunta32" name="pregunta32">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta33">6. Admira ideas creativas</label>
+                    <input type="text" id="pregunta33" name="pregunta33">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta34">7. Tienes ideas y visión de conjunto</label>
+                    <input type="text" id="pregunta34" name="pregunta34">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta35">8. Trabaja en ráfagas de energía</label>
+                    <input type="text" id="pregunta35" name="pregunta35">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta36">9. Piensa en las implicaciones futuras</label>
+                    <input type="text" id="pregunta36" name="pregunta36">
+                </div>
+            </section>
+        </div>
+        
+        <input type="hidden" id="id_perfil" name="id_perfil" value="{{ perfil.id_perfil }}">
+        <input type="hidden" id="id_puesto" name="id_puesto" value="{{ perfil.id_puesto }}">
+        
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

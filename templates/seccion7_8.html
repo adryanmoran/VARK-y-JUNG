@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sección 7 y 8</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Secciones.css') }}">
+</head>
+<body>
+    <form action="/sumar_secciones7_8" method="post"> 
+        <div class="columnas">
+            <section>
+                <h2>Sección 7</h2>
+                <div class="pregunta">
+                    <label for="pregunta55">1. Trabajar primero, jugar después</label>
+                    <input type="text" id="pregunta55" name="pregunta55">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta56">2. Prefiere terminar proyectos</label>
+                    <input type="text" id="pregunta56" name="pregunta56">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta57">3. Se siente a gusto llevando sus agendas</label>
+                    <input type="text" id="pregunta57" name="pregunta57">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta58">4. Le gusta tomar decisiones</label>
+                    <input type="text" id="pregunta58" name="pregunta58">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta59">5. Presta atención al tiempo, puntualidad</label>
+                    <input type="text" id="pregunta59" name="pregunta59">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta60">6. Le gusta hacer y atenerse a planes</label>
+                    <input type="text" id="pregunta60" name="pregunta60">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta61">7. Quiere que las cosas se decidan</label>
+                    <input type="text" id="pregunta61" name="pregunta61">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta62">8. Serio y convencional</label>
+                    <input type="text" id="pregunta62" name="pregunta62">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta63">9. Justifica la mayoría de las reglas</label>
+                    <input type="text" id="pregunta63" name="pregunta63">
+                </div>
+            </section>
+
+            <section>
+                <h2>Sección 8</h2>
+                <div class="pregunta">
+                    <label for="pregunta64">1. Jugar primero, trabajar después</label>
+                    <input type="text" id="pregunta64" name="pregunta64">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta65">2. Prefiere empezar proyectos</label>
+                    <input type="text" id="pregunta65" name="pregunta65">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta66">3. Desea la libertad de la espontaneidad</label>
+                    <input type="text" id="pregunta66" name="pregunta66">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta67">4. Pospone algunas decisiones, si puede</label>
+                    <input type="text" id="pregunta67" name="pregunta67">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta68">5. Menos consciente del tiempo, impuntual</label>
+                    <input type="text" id="pregunta68" name="pregunta68">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta69">6. Le gusta la flexibilidad en los planes</label>
+                    <input type="text" id="pregunta69" name="pregunta69">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta70">7. Quiere tener opciones abiertas</label>
+                    <input type="text" id="pregunta70" name="pregunta70">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta71">8. Relajado y poco convencional</label>
+                    <input type="text" id="pregunta71" name="pregunta71">
+                </div>
+                <div class="pregunta">
+                    <label for="pregunta72">9. Cuestiona mucho las reglas</label>
+                    <input type="text" id="pregunta72" name="pregunta72">
+                </div>
+            </section>
+        </div>
+        
+        <input type="hidden" id="id_perfil" name="id_perfil" value="{{ perfil.id_perfil }}">
+        <input type="hidden" id="id_puesto" name="id_puesto" value="{{ perfil.id_puesto }}">
+        
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

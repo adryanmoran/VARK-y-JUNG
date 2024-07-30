@@ -1,0 +1,58 @@
+/* Estilo CSS Actualizado con Mejoras */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #5b5b5b;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #2a2a2a;
+}
+
+img {
+    width: 200px;
+    margin-top: 20px;
+    border-radius: 50%;
+}
+
+/* Estilos adicionales para el formulario */
+form {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    margin-top: 20px; /* Agregamos un espacio adicional arriba del formulario */
+}
+
+form:hover {
+    transform: translateY(-5px);
+}

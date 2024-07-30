@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Categoría Jung</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(45deg, #2980b9, #2c3e50);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            padding-top: 20px;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            height: auto;
+        }
+        .nav-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav-container ul {
+            padding: 0;
+            list-style: none;
+        }
+        .nav-container ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        .nav-container ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        @media only screen and (min-width: 768px) {
+            h1 {
+                padding-top: 50px;
+                font-size: 42px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <ul>
+            <li><a href="/bienvenido">Inicio</a></li>
+        </ul>
+    </div>
+    <h1>Dashboard Categoría Jung</h1>
+    <canvas id="categoriaChart" width="600" height="400"></canvas>
+    <script>
+        var ctx = document.getElementById('categoriaChart').getContext('2d');
+        var categoriaChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ labels|tojson }},
+                datasets: [{
+                    label: '# de Categorías',
+                    data: {{ values|tojson }},
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
